@@ -3,8 +3,31 @@
   <head>
     <meta charset="UTF-8">
     <title>title</title>
+    <script class="book-stats" type="text/x-handlebars-template">
+      <li>{{title}} by {{author}}</li>
+    </script>
+    <script id="book-list-template" type="text/x-handlebars-template">
+      <article class="clearfix">
+          <h1>{{title}}</h1>
+          <p>By {{author}}</p>
+      </article>
+    </script>
   </head>
   <body>
     <h1>Hello, i live in the computer.</h1>
+    <article id="book-list"></article>
+    <section class="bookView"> 
+      <dt>Total books:</dt> <dd class="totalBooks"></dd>
+      <ul class="book-stats">     
+      </ul>
+    </section>
+    <section class="aboutView">
+      <p>This is Jordan and Bills book blog :)</p>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="scripts/book.js"></script>
+    <script src="scripts/book-view.js"></script>
+    <script src="scripts/error-view.js"></script>
   </body>
 </html>

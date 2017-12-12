@@ -1,5 +1,5 @@
 let bookView = {};
-
+console.log("fdf");
 bookView.initIndexPage = function() {
     $('.container').hide()
     $('.book-view').show()
