@@ -1,15 +1,12 @@
 let errorView = {};
 
-errorView.initErrorPage(err) {
+errorView.initErrorPage = function(err){
+    console.log('inside initerrorpage')
     $('.container').hide();
     $('.error-view').show();
-    $('#error-message').html('');
+    $('#error-message').empty();
     var template = Handlebars.compile($('#error-template').text());
     $('#error-message').append(template(err));
 
 }
 
-function errorCallback(err) {
-    console.log(err);
-    errorView.initErrorPage(err);
-}
