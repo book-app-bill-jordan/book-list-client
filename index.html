@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8">
     <title>title</title>
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/icons.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/modules/book-main.css">
+    <link rel="stylesheet" href="/styles/modules/detail-main.css">
+    <link rel="stylesheet" href="/styles/modules/error.css">
+    <link rel="stylesheet" href="/styles/modules/footer.css">
+    <link rel="stylesheet" href="/styles/modules/form-main.css">
+    <link rel="stylesheet" href="/styles/modules/header.css">
+
     <script class="book-stats" type="text/x-handlebars-template">
       <li>{{title}} by {{author}}</li>
     </script>
@@ -23,7 +34,19 @@
       <p>{{description}}</p>
     </script>
   </head>
+
   <body>
+    <header>
+      <img id="codefellows-logo" src="https://dgosxlrnzhofi.cloudfront.net/assets/dev-icons-cf-a1adb87c240970eb531b2b276c642aed.png">
+      <span>books app</span>
+      <div class="icon-menu"></div>
+      <div id="dropdown-menu">
+        <ul>
+          <li>View All Books</li>
+          <li>Add A New Book</li>
+        </ul>
+      </div>
+    </header>
     <div class="container">
       <h1>Hello, i live in the computer.</h1>
       <section id="book-list"></section>
@@ -39,6 +62,13 @@
     <section id="detail-view">
     </section>
     <div id="error-message"></div>
+    <footer>
+      <div>
+        <div class="icon-github"></div>
+        <div class="icon-linkedin"><div>
+      </div>
+    </footer>
+
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
