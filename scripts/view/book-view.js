@@ -6,8 +6,8 @@ Book.prototype.toHtml = function() {
 }
 
 bookView.initIndexPage = function() {
-    console.log('help')
-    $('.container').hide()
+    console.log('inside initindexpage')
+    // $('.container').hide()
     $('.book-view').show()
     Book.all.forEach(a => $('#book-list').append(a.toHtml()));
     $('.book-stats').text(Book.all.length);
