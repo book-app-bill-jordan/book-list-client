@@ -1,0 +1,25 @@
+footer {
+  background-color: #9c9c9c;
+  height: 140px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+footer div {
+  float: right;
+  padding-top: 5px;
+}
+
+footer div * {
+  font-size: 25px;
+  padding-right: 5px;
+}
+
+footer .icon-github {
+  color: #4d4e4f;
+}
+
+footer .icon-linkedin {
+  color: #3e3e3e;
+}
