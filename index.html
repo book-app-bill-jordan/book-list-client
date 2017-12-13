@@ -10,31 +10,66 @@
       <article class="clearfix">
           <h1>{{title}}</h1>
           <p>By {{author}}</p>
+          <a href="/books/{{book_id}}">Detail</a>
       </article>
     </script>
     <script id="error-template" type="text/x-handlebars-template">
           <h1>Oops something went wrong</h1>
           <p>By {{author}}</p>
-    </script> 
+    </script>
+    <script id="book-detail-template" type="text/x-handlebars-template">
+      <h1>{{title}}</h1>
+      <h2>{{author}}</h2>
+      <h2>{{isbn}}</h2>
+      <img src="{{image_url}}">
+      <p>{{description}}</p>
+    </script>
   </head>
   <body>
     <div class="container">
       <h1>Hello, i live in the computer.</h1>
       <section id="book-list"></section>
-      <section class="bookView"> 
+      <section class="book-view">
         <dt>Total books:</dt> <dd class="totalBooks"></dd>
-        <ul class="book-stats">     
+        <ul class="book-stats">
         </ul>
       </section>
       <section class="aboutView">
         <p>This is Jordan and Bills book blog :)</p>
       </section>
     </div>
+    <section id="detail-view">
+      <h1>Detail View</h1>
+    </section>
+    <section id="form-view">
+      <form action="#" id="new-form">
+        <label>
+            <input type="text" id="book-title" placeholder="Title" required>
+          </label>
+        <label>
+          <input type="text" id="book-author" placeholder="Author" required>
+        </label>
+        <label>
+          <input type="text" id="book-isbn" placeholder="isbn" required>
+        </label>
+        <label>
+          <input type="text" id="book-url" placeholder="book URL" required>
+        </label>
+        <label>
+          <textarea style="font-size:12pt" col=40 rows=2 id="book-description" placeholder="Body" required></textarea>
+        </label>
+        <label>
+          <input type="submit" id="book-submit">
+        </label>
+      </form>
+    </section>
     <div id="error-message"></div>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="scripts/models/book.js"></script>
     <script src="scripts/view/book-view.js"></script>
     <script src="scripts/view/error-view.js"></script>
+    <script src="scripts/view/routes.js"></script>
   </body>
 </html>
