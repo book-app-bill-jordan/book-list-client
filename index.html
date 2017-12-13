@@ -15,22 +15,31 @@
     <script id="error-template" type="text/x-handlebars-template">
           <h1>Oops something went wrong</h1>
           <p>By {{author}}</p>
-    </script> 
+    </script>
+    <script id="book-detail-template" type="text/x-handlebars-template">
+      <h1>{{title}}</h1>
+      <h2>{{author}}</h2>
+      <h2>{{isbn}}</h2>
+      <p>{{description}}</p>
+    </script>
   </head>
   <body>
     <div class="container">
       <h1>Hello, i live in the computer.</h1>
       <section id="book-list"></section>
-      <section class="bookView"> 
+      <section class="book-view">
         <dt>Total books:</dt> <dd class="totalBooks"></dd>
-        <ul class="book-stats">     
+        <ul class="book-stats">
         </ul>
       </section>
       <section class="aboutView">
         <p>This is Jordan and Bills book blog :)</p>
       </section>
     </div>
+    <section id="detail-view">
+    </section>
     <div id="error-message"></div>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="scripts/models/book.js"></script>

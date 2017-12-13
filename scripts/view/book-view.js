@@ -13,6 +13,11 @@ bookView.initIndexPage = function() {
     $('.book-stats').text(Book.all.length);
 }
 
+bookView.initDetailPage = function() {
+  console.log('inside detail page');
+  
+}
+
 // Document.ready(Book.fetchAll(bookView.initIndexPage))
 
 $(function() {

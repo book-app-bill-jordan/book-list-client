@@ -24,6 +24,14 @@ Book.fetchAll = callback => {
     .catch(errorCallback)
 }
 
+Book.fetchOne = callback => {
+  $.get(`${__API_URL__}/api/v1/books:id`)
+  .then()
+  .then(callback)
+  .catch(errorCallback)
+  ctx.body.title = title
+}
+
 function errorCallback(err) {
     console.log(err);
     errorView.initErrorPage(err);
