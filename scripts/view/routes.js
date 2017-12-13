@@ -1,7 +1,7 @@
 'use strict';
 
-// page('/', Book.fetchAll(bookView.initIndexPage));
-page('/api/v1/books/add', taskView.initAddForm());
-page('/api/v1/books/:id', ctx => Book.fetchOne(ctx, Book.initDetailPage));
+// page('/api/v1/books/', Book.fetchAll(bookView.initIndexPage));
+page('/api/v1/books/new', ctx => bookView.initAddForm(ctx));
+page('/books/:id', ctx => Book.fetchOne(ctx, bookView.initDetailPage));
 
 page();

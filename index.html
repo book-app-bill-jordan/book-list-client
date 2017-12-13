@@ -10,6 +10,7 @@
       <article class="clearfix">
           <h1>{{title}}</h1>
           <p>By {{author}}</p>
+          <a href="/books/{{book_id}}">Detail</a>
       </article>
     </script>
     <script id="error-template" type="text/x-handlebars-template">
@@ -20,6 +21,7 @@
       <h1>{{title}}</h1>
       <h2>{{author}}</h2>
       <h2>{{isbn}}</h2>
+      <img src="{{image_url}}">
       <p>{{description}}</p>
     </script>
   </head>
@@ -37,6 +39,7 @@
       </section>
     </div>
     <section id="detail-view">
+      <h1>Detail View</h1>
     </section>
     <section id="form-view">
       <form action="#" id="new-form">
@@ -57,7 +60,6 @@
         </label>
         <label>
           <input type="submit" id="book-submit">
-          submit
         </label>
       </form>
     </section>
@@ -68,5 +70,6 @@
     <script src="scripts/models/book.js"></script>
     <script src="scripts/view/book-view.js"></script>
     <script src="scripts/view/error-view.js"></script>
+    <script src="scripts/view/routes.js"></script>
   </body>
 </html>
