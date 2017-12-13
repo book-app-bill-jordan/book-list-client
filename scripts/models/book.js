@@ -24,12 +24,11 @@ Book.fetchAll = callback => {
     .catch(errorCallback)
 }
 
-Book.fetchOne = callback => {
-  $.get(`${__API_URL__}/api/v1/books:id`)
-  .then()
+Book.fetchOne = (ctx, callback) => {
+  $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
+  .then(data => ctx.bookObj = data[0])
   .then(callback)
   .catch(errorCallback)
-  ctx.body.title = title
 }
 
 function errorCallback(err) {

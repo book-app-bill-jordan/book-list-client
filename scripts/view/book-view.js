@@ -13,9 +13,10 @@ bookView.initIndexPage = function() {
     $('.book-stats').text(Book.all.length);
 }
 
-bookView.initDetailPage = function() {
+bookView.initDetailPage = function(ctx) {
   console.log('inside detail page');
-  
+  var template = Handlebars.compile($('#book-list-template').text());
+  return template(ctx);
 }
 
 // Document.ready(Book.fetchAll(bookView.initIndexPage))
