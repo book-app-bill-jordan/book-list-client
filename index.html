@@ -38,6 +38,29 @@
     </div>
     <section id="detail-view">
     </section>
+    <section id="form-view">
+      <form action="#" id="new-form">
+        <label>
+            <input type="text" id="book-title" placeholder="Title" required>
+          </label>
+        <label>
+          <input type="text" id="book-author" placeholder="Author" required>
+        </label>
+        <label>
+          <input type="text" id="book-isbn" placeholder="isbn" required>
+        </label>
+        <label>
+          <input type="text" id="book-url" placeholder="book URL" required>
+        </label>
+        <label>
+          <textarea style="font-size:12pt" col=40 rows=2 id="book-description" placeholder="Body" required></textarea>
+        </label>
+        <label>
+          <input type="submit" id="book-submit">
+          submit
+        </label>
+      </form>
+    </section>
     <div id="error-message"></div>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
