@@ -30,3 +30,11 @@ header #dropdown-menu li {
   line-height: 90px;
   text-indent: 20px;
 }
+
+form {
+}
+
+form * {
+  display: block;
+  padding: 10px;
+}
