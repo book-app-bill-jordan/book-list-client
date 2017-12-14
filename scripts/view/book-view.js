@@ -15,39 +15,60 @@ bookView.initIndexPage = function() {
 }
 
 bookView.initDetailPage = function(ctx) {
+    console.log(ctx)
     // resetView(); use this!
 //   console.log('inside detail page');
 //    console.log(ctx)
   $('.container').hide();
   $('#detail-view').show();
+  $('#update-delete').show();
   $('.book-detail').empty();
   var template = Handlebars.compile($('#book-detail-template').text());
 //   console.log(template(ctx))
   $('#detail-view').append(template(ctx));
 //   return template(ctx);
+  $('#delete-button').on('click' , function(event) {
+      Book.destroy(ctx);
+    });
+  $('#update-button').on('click' , function(event) {
+        bookView.initUpdateFormPage(ctx)
+    })
 }
-
-// bookView.initAddForm = function() {
-//     // $('.container').hide();
-//     $('#form-view').show();
-// }
-// $('#new-form').on('submit', bookView.create)
 
 bookView.initCreateFormPage = () => {
     resetView();
     $('#form-view').show();
-    $('#new-form').on('submit', function(event) {
-    event.preventDefault();
-
-  
-    let book = new Book({
-      title: $('#book-title').val(),
-      author: $('#book-author').val(),
-      authorUrl: $('#book-url').val(),
-      category: $('#article-category').val(),
-      description: $('#book-description').val(),
-    });
-    Book.create(book)
+    $('#book-submit').on('click', function(event) {
+        event.preventDefault();
+        let book = new Book({
+            title: $('#book-title').val(),
+            author: $('#book-author').val(),
+            isbn: $('#book-isbn').val(),
+            image_url: $('#book-url').val(),
+            description: $('#book-description').val(),
+        });
+        Book.create(book)
     });
 }
 
+bookView.initUpdateFormPage = (ctx) => {
+   resetView();
+   console.log(ctx)
+   $('#update-form-view').show();
+   $('#update-book-title').val(`${ctx.title}`);
+   $('#update-book-author').val(`${ctx.author}`);
+   $('#update-book-isbn').val(`${ctx.isbn}`);
+   $('#update-book-url').val(`${ctx.image_url}`);
+   $('#update-book-description').val(`${ctx.description}`);
+   $('update-form').on('submit', function(event) {
+       event.preventDefault();
+    //    let book = new Book({
+        ctx.title= $('#book-title').val();
+        ctx.author= $('#book-author').val();
+        ctx.isbn= $('#book-isbn').val();
+        ctx.image_url= $('#book-url').val();
+        ctx.description= $('#book-description').val();
+        console.log('after', ctx)
+        })
+   Book.update(ctx)
+}
