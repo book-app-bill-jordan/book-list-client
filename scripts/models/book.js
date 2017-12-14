@@ -53,6 +53,7 @@ Book.destroy = function(ctx, callback) {
 }
 
 Book.update = function(ctx, callback) {
+    console.log(ctx)
     $.ajax({
         url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
         method: 'PUT',
