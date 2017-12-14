@@ -86,22 +86,22 @@
       <span>update a book</span>
       <form id="update-form">
         <label>
-            <input type="text" id="book-title" placeholder="Title" required>
+            <input type="text" id="update-book-title" placeholder="Title" required>
           </label>
         <label>
-          <input type="text" id="book-author" placeholder="Author" required>
+          <input type="text" id="update-book-author" placeholder="Author" required>
         </label>
         <label>
-          <input type="text" id="book-isbn" placeholder="isbn" required>
+          <input type="text" id="update-book-isbn" placeholder="isbn" required>
         </label>
         <label>
-          <input type="text" id="book-url" placeholder="book URL" required>
+          <input type="text" id="update-book-url" placeholder="book URL" required>
         </label>
         <label>
-          <textarea style="font-size:12pt" col=40 rows=2 id="book-description" placeholder="Body" required></textarea>
+          <textarea style="font-size:12pt" col=40 rows=2 id="update-book-description" placeholder="Body" required></textarea>
         </label>
         <label>
-          <input type="submit" id="book-submit">
+          <input type="submit" id="update-book-submit">
         </label>
       </form>
     </section>
@@ -110,6 +110,16 @@
       <button type="button" id="delete-button" attr="data-id">Delete</button>
     </section>
     <div id="error-message" class="container"></div>
+    <section class="container" id="admin-field">
+      <form id="password-form">
+        <label>
+          <input type="password" id="password-input">
+        </label>
+        <label>
+            <input type="submit" id="password-submit">
+        </label>
+      </form>
+    </section>
     <footer>
       <div>
         <div class="icon-github"></div>
@@ -120,6 +130,7 @@
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="scripts/view/admin-view.js"></script>
     <script src="scripts/models/book.js"></script>
     <script src="scripts/view/book-view.js"></script>
     <script src="scripts/view/error-view.js"></script>

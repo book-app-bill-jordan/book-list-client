@@ -43,7 +43,7 @@ Book.create = book => {
         .catch(errorCallback);
 }
 
-Book.prototype.destroy = function(ctx, callback) {
+Book.destroy = function(ctx, callback) {
     $.ajax({
       url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
       method: 'DELETE'
@@ -52,6 +52,19 @@ Book.prototype.destroy = function(ctx, callback) {
     .catch(errorCallback);
 }
 
+Book.update = function(ctx, callback) {
+    $.ajax({
+        url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
+        method: 'PUT',
+        data: {
+            title: this.title,
+            author: this.author,
+            isbn: this.isbn,
+            image_url: this.image_url,
+            description: this.description
+        }
+    })
+}
 function errorCallback(err) {
     console.log(err);
     errorView.initErrorPage(err);

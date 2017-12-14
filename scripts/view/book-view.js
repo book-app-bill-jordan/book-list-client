@@ -28,31 +28,47 @@ bookView.initDetailPage = function(ctx) {
   $('#detail-view').append(template(ctx));
 //   return template(ctx);
   $('#delete-button').on('click' , function(event) {
-     
-      
       Book.prototype.destroy(ctx);
     });
+  $('#update-button').on('click' , function(event) {
+        bookview.initUpdateFormPage(ctx)
+    })
 }
-
-// bookView.initAddForm = function() {
-//     // $('.container').hide();
-//     $('#form-view').show();
-// }
-// $('#new-form').on('submit', bookView.create)
 
 bookView.initCreateFormPage = () => {
     resetView();
     $('#form-view').show();
-    $('#new-form').on('submit', function(event) {
+    $('#book-submit').on('click', function(event) {
         event.preventDefault();
         let book = new Book({
             title: $('#book-title').val(),
             author: $('#book-author').val(),
-            authorUrl: $('#book-url').val(),
-            category: $('#article-category').val(),
+            isbn: $('#book-isbn').val(),
+            image_url: $('#book-url').val(),
             description: $('#book-description').val(),
         });
         Book.create(book)
     });
 }
 
+bookView.initUpdateFormPage = (ctx) => {
+   resetView();
+//    console.log(ctx)
+//    $('update-form-view').show();
+//    $('#update-book-title').val(),
+//    $('#update-book-author').val(),
+//    $('#update-book-isbn').val(),
+//    $('#update-book-url').val(),
+//    $('#update-book-description').val(),
+   $('update-form').on('submit', function(event) {
+       event.preventDefault();
+       let book = new Book({
+        title: $('#book-title').val(),
+        author: $('#book-author').val(),
+        isbn: $('#book-isbn').val(),
+        image_url: $('#book-url').val(),
+        description: $('#book-description').val(),
+        })
+   Book.prototype.update(book)
+    })
+}
