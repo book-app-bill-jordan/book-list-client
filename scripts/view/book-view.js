@@ -15,6 +15,7 @@ bookView.initIndexPage = function() {
 }
 
 bookView.initDetailPage = function(ctx) {
+    console.log(ctx)
     // resetView(); use this!
 //   console.log('inside detail page');
 //    console.log(ctx)
@@ -26,6 +27,11 @@ bookView.initDetailPage = function(ctx) {
 //   console.log(template(ctx))
   $('#detail-view').append(template(ctx));
 //   return template(ctx);
+  $('#delete-button').on('click' , function(event) {
+     
+      
+      Book.prototype.destroy(ctx);
+    });
 }
 
 // bookView.initAddForm = function() {
@@ -38,17 +44,15 @@ bookView.initCreateFormPage = () => {
     resetView();
     $('#form-view').show();
     $('#new-form').on('submit', function(event) {
-    event.preventDefault();
-
-  
-    let book = new Book({
-      title: $('#book-title').val(),
-      author: $('#book-author').val(),
-      authorUrl: $('#book-url').val(),
-      category: $('#article-category').val(),
-      description: $('#book-description').val(),
-    });
-    Book.create(book)
+        event.preventDefault();
+        let book = new Book({
+            title: $('#book-title').val(),
+            author: $('#book-author').val(),
+            authorUrl: $('#book-url').val(),
+            category: $('#article-category').val(),
+            description: $('#book-description').val(),
+        });
+        Book.create(book)
     });
 }
 

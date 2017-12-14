@@ -43,6 +43,15 @@ Book.create = book => {
         .catch(errorCallback);
 }
 
+Book.prototype.destroy = function(ctx, callback) {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
+      method: 'DELETE'
+    })
+    .then(() => page('/'))
+    .catch(errorCallback);
+}
+
 function errorCallback(err) {
     console.log(err);
     errorView.initErrorPage(err);
