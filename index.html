@@ -19,9 +19,12 @@
     </script>
     <script id="book-list-template" type="text/x-handlebars-template">
       <article class="clearfix">
-          <h1>{{title}}</h1>
-          <p>By {{author}}</p>
-          <a href="/books/{{book_id}}">Detail</a>
+          <img src="{{image_url}}">
+          <div id="overlay">
+            <h1>{{title}}</h1>
+            <p>By {{author}}</p>
+            <a href="/books/{{book_id}}">view details</a>
+          </div>
       </article>
     </script>
     <script id="error-template" type="text/x-handlebars-template">
@@ -49,22 +52,15 @@
         </ul>
       </div>
     </header>
-    <div class="container">
-      <h1>Book Blog</h1>
-      <section id="book-list"></section>
-      <section class="book-view">
+      <section id="book-list" class="container"></section>
+      <section class="book-view container">
         <dt>Total books:</dt> <dd class="totalBooks"></dd>
         <ul class="book-stats">
         </ul>
       </section>
-      <section class="aboutView">
-        <p>This is Jordan and Bills book blog :)</p>
-      </section>
-    </div>
-    <section id="detail-view" class="container">
-      <h1>Detail View</h1>
-    </section>
+    <section id="detail-view" class="container"></section>
     <section id="form-view" class="container">
+      <span>add a new book</span>
       <form id="new-form">
         <label>
             <input type="text" id="book-title" placeholder="Title" required>
@@ -86,7 +82,7 @@
         </label>
       </form>
     </section>
-    <div id="error-message"></div>
+    <div id="error-message" class="container"></div>
     <footer>
       <div>
         <div class="icon-github"></div>

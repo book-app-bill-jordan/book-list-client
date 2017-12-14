@@ -6,12 +6,10 @@ Book.prototype.toHtml = function() {
 }
 
 bookView.initIndexPage = function() {
-    // resetView();
-    console.log('inside initindexpage')
-    // $('.container').hide()
-    // $('#form-view').hide();
-    $('.book-list').empty();
-    $('.book-view').show()
+    resetView();
+    $('#book-list').empty();
+    $('#book-list').show();
+    $('.book-view').show();
     Book.all.forEach(a => $('#book-list').append(a.toHtml()));
     $('.book-stats').text(Book.all.length);
 }
@@ -36,9 +34,8 @@ bookView.initDetailPage = function(ctx) {
 // $('#new-form').on('submit', bookView.create)
 
 bookView.initCreateFormPage = () => {
-    // resetView();
-    console.log('inside create')
-    $('.create-view').show();
+    resetView();
+    $('#form-view').show();
     $('#new-form').on('submit', function(event) {
     event.preventDefault();
 
@@ -51,11 +48,6 @@ bookView.initCreateFormPage = () => {
       description: $('#book-description').val(),
     });
     Book.create(book)
-    // $('.book-list').append(book.toHtml());
     });
 }
-// Document.ready(Book.fetchAll(bookView.initIndexPage))
 
-$(function() {
-    Book.fetchAll(bookView.initIndexPage);
-})

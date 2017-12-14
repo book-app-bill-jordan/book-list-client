@@ -20,7 +20,7 @@ Book.loadAll = rows => {
 }
 
 Book.fetchAll = callback => {
-    console.log("Working");
+    console.log("fetchall");
     $.get(`${__API_URL__}/api/v1/books`)
     .then(Book.loadAll)
     .then(callback)
@@ -40,7 +40,7 @@ Book.fetchOne = (ctx, callback) => {
 Book.create = book => {
     $.post(`${__API_URL__}/api/v1/books`, book)
         .then(() => page('/'))
-        .catch(erroCallback);
+        .catch(errorCallback);
 }
 
 function errorCallback(err) {
