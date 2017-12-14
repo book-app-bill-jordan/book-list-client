@@ -6,21 +6,25 @@ Book.prototype.toHtml = function() {
 }
 
 bookView.initIndexPage = function() {
+    // resetView();
     console.log('inside initindexpage')
     // $('.container').hide()
     // $('#form-view').hide();
+    $('.book-list').empty();
     $('.book-view').show()
     Book.all.forEach(a => $('#book-list').append(a.toHtml()));
     $('.book-stats').text(Book.all.length);
 }
 
 bookView.initDetailPage = function(ctx) {
-  console.log('inside detail page');
-  console.log(ctx)
+    // resetView(); use this!
+//   console.log('inside detail page');
+//    console.log(ctx)
   $('.container').hide();
   $('#detail-view').show();
+  $('.book-detail').empty();
   var template = Handlebars.compile($('#book-detail-template').text());
-  console.log(template(ctx))
+//   console.log(template(ctx))
   $('#detail-view').append(template(ctx));
 //   return template(ctx);
 }
@@ -29,22 +33,27 @@ bookView.initDetailPage = function(ctx) {
 //     // $('.container').hide();
 //     $('#form-view').show();
 // }
-$('#new-form').on('submit', bookView.create)
+// $('#new-form').on('submit', bookView.create)
 
-bookView.create = () => {
+bookView.initCreateFormPage = () => {
+    // resetView();
     console.log('inside create')
-    let book;
-    // $('#articles').empty();
+    $('.create-view').show();
+    $('#new-form').on('submit', function(event) {
+    event.preventDefault();
+
   
-    book = new Book({
+    let book = new Book({
       title: $('#book-title').val(),
       author: $('#book-author').val(),
       authorUrl: $('#book-url').val(),
       category: $('#article-category').val(),
       description: $('#book-description').val(),
     });
-    $('.book-list').append(book.toHtml());
-};
+    Book.create(book)
+    // $('.book-list').append(book.toHtml());
+    });
+}
 // Document.ready(Book.fetchAll(bookView.initIndexPage))
 
 $(function() {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>title</title>
-    <link rel="stylesheet" href="/styles/reset.css">
+    <!-- <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/icons.css">
     <link rel="stylesheet" href="/styles/base.css">
     <link rel="stylesheet" href="/styles/layout.css">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/styles/modules/error.css">
     <link rel="stylesheet" href="/styles/modules/footer.css">
     <link rel="stylesheet" href="/styles/modules/form-main.css">
-    <link rel="stylesheet" href="/styles/modules/header.css">
+    <link rel="stylesheet" href="/styles/modules/header.css"> -->
 
     <script class="book-stats" type="text/x-handlebars-template">
       <li>{{title}} by {{author}}</li>
@@ -45,12 +45,12 @@
       <div id="dropdown-menu">
         <ul>
           <li>View All Books</li>
-          <li>Add A New Book</li>
+          <li><a href="/books/new">Add A New Book</a></li>
         </ul>
       </div>
     </header>
     <div class="container">
-      <h1>Hello, i live in the computer.</h1>
+      <h1>Book Blog</h1>
       <section id="book-list"></section>
       <section class="book-view">
         <dt>Total books:</dt> <dd class="totalBooks"></dd>
@@ -61,11 +61,11 @@
         <p>This is Jordan and Bills book blog :)</p>
       </section>
     </div>
-    <section id="detail-view">
+    <section id="detail-view" class="container">
       <h1>Detail View</h1>
     </section>
-    <section id="form-view">
-      <form action="#" id="new-form">
+    <section id="form-view" class="container">
+      <form id="new-form">
         <label>
             <input type="text" id="book-title" placeholder="Title" required>
           </label>

@@ -10,6 +10,9 @@ function Book(bookObj) {
 
 Book.all = []
 
+function resetView() {
+    $('.container').hide();
+}
 Book.loadAll = rows => {
     rows.sort((a,b) => b.title - a.title)
 
@@ -25,13 +28,19 @@ Book.fetchAll = callback => {
 }
 
 Book.fetchOne = (ctx, callback) => {
-    // console.log(ctx)
+    console.log(ctx)
   $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
 //   .then(console.log('inside fetchone'))
 //   .then(data => console.log(data))
   .then(data => ctx.bookObj = data[0])
   .then(callback)
   .catch(errorCallback)
+}
+
+Book.create = book => {
+    $.post(`${__API_URL__}/api/v1/books`, book)
+        .then(() => page('/'))
+        .catch(erroCallback);
 }
 
 function errorCallback(err) {
