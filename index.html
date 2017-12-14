@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>title</title>
-    <link rel="stylesheet" href="/styles/reset.css">
+    <!-- <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/icons.css">
     <link rel="stylesheet" href="/styles/base.css">
     <link rel="stylesheet" href="/styles/layout.css">
@@ -12,16 +12,19 @@
     <link rel="stylesheet" href="/styles/modules/error.css">
     <link rel="stylesheet" href="/styles/modules/footer.css">
     <link rel="stylesheet" href="/styles/modules/form-main.css">
-    <link rel="stylesheet" href="/styles/modules/header.css">
+    <link rel="stylesheet" href="/styles/modules/header.css"> -->
 
     <script class="book-stats" type="text/x-handlebars-template">
       <li>{{title}} by {{author}}</li>
     </script>
     <script id="book-list-template" type="text/x-handlebars-template">
       <article class="clearfix">
-          <h1>{{title}}</h1>
-          <p>By {{author}}</p>
-          <a href="/books/{{book_id}}">Detail</a>
+          <img src="{{image_url}}">
+          <div id="overlay">
+            <h1>{{title}}</h1>
+            <p>By {{author}}</p>
+            <a href="/books/{{book_id}}">view details</a>
+          </div>
       </article>
     </script>
     <script id="error-template" type="text/x-handlebars-template">
@@ -49,23 +52,16 @@
         </ul>
       </div>
     </header>
-    <div class="container">
-      <h1>Hello, i live in the computer.</h1>
-      <section id="book-list"></section>
-      <section class="book-view">
+      <section id="book-list" class="container"></section>
+      <section class="book-view container">
         <dt>Total books:</dt> <dd class="totalBooks"></dd>
         <ul class="book-stats">
         </ul>
       </section>
-      <section class="aboutView">
-        <p>This is Jordan and Bills book blog :)</p>
-      </section>
-    </div>
-    <section id="detail-view">
-      <h1>Detail View</h1>
-    </section>
-    <section id="form-view">
-      <form action="#" id="new-form">
+    <section id="detail-view" class="container"></section>
+    <section id="form-view" class="container">
+      <span>add a new book</span>
+      <form id="new-form">
         <label>
             <input type="text" id="book-title" placeholder="Title" required>
           </label>
@@ -86,7 +82,34 @@
         </label>
       </form>
     </section>
-    <div id="error-message"></div>
+    <section id="update-form-view" class="container">
+      <span>update a book</span>
+      <form id="update-form">
+        <label>
+            <input type="text" id="book-title" placeholder="Title" required>
+          </label>
+        <label>
+          <input type="text" id="book-author" placeholder="Author" required>
+        </label>
+        <label>
+          <input type="text" id="book-isbn" placeholder="isbn" required>
+        </label>
+        <label>
+          <input type="text" id="book-url" placeholder="book URL" required>
+        </label>
+        <label>
+          <textarea style="font-size:12pt" col=40 rows=2 id="book-description" placeholder="Body" required></textarea>
+        </label>
+        <label>
+          <input type="submit" id="book-submit">
+        </label>
+      </form>
+    </section>
+    <section class="container" id="update-delete">
+      <button type="button" id="update-button" attr="data-id">Update</button>
+      <button type="button" id="delete-button" attr="data-id">Delete</button>
+    </section>
+    <div id="error-message" class="container"></div>
     <footer>
       <div>
         <div class="icon-github"></div>
