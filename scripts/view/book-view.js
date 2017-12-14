@@ -20,6 +20,7 @@ bookView.initDetailPage = function(ctx) {
 //    console.log(ctx)
   $('.container').hide();
   $('#detail-view').show();
+  $('#update-delete').show();
   $('.book-detail').empty();
   var template = Handlebars.compile($('#book-detail-template').text());
 //   console.log(template(ctx))
