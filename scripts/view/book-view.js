@@ -91,7 +91,8 @@ bookView.initSearchFormPage = (callback) => {
     
 }
 
-bookView.initSearchResultsPage = (arr) => {
-    $('#search-result').show()
-    arr.forEach(a => $('#search-results').append(a.toHtml()));
+bookView.initSearchResultsPage = () => {
+    console.log('search results page')
+    $('#search-results').show()
+    Book.all.forEach(a => $('#search-results').append(a.toHtml()));
 }

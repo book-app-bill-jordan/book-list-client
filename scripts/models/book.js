@@ -14,6 +14,7 @@ function resetView() {
     $('.container').hide();
 }
 Book.loadAll = rows => {
+    console.log(rows)
     rows.sort((a,b) => b.title - a.title)
 
     Book.all = rows.map(x => new Book(x))
@@ -74,7 +75,7 @@ Book.find = function (book, callback) {
     console.log(book, callback)
     $.get(`${__API_URL__}/api/v1/books/find`, book)
     .then(Book.loadAll)
-    .then(callback)
+    .then(bookView.initSearchResultsPage)
     .catch(errorCallback)
 }
 function errorCallback(err) {
