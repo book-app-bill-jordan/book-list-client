@@ -28,7 +28,7 @@ Book.fetchAll = callback => {
 }
 
 Book.fetchOne = (ctx, callback) => {
-    console.log(ctx)
+    // console.log(ctx)
   $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
 //   .then(console.log('inside fetchone'))
 //   .then(data => console.log(data))
@@ -53,7 +53,7 @@ Book.destroy = function(ctx, callback) {
 }
 
 Book.update = function(ctx, id) {
-    console.log(ctx)
+    // console.log(ctx)
     console.log(id)
     $.ajax({
         url: `${__API_URL__}/api/v1/books/${id}`,
@@ -69,9 +69,24 @@ Book.update = function(ctx, id) {
     .then(() => page('/'))
     .catch(errorCallback);
 }
+
+Book.find = function (book, callback) {
+    console.log(book, callback)
+    $.get(`${__API_URL__}/api/v1/books/find`, book)
+    .then(Book.loadAll)
+    .then(callback)
+    .catch(errorCallback)
+}
 function errorCallback(err) {
     console.log(err);
     errorView.initErrorPage(err);
+}
+
+Book.findOne = function (isbn) {
+    $.get(`${__API_URL__}/api/v1/books/find/:isbn`, isbn)
+    .then(Book.create)
+    .then(callback)
+    .catch(errorCallback)
 }
 //     module.Book = Book;
 // });(app)

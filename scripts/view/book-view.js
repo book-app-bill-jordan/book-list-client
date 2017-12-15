@@ -15,7 +15,7 @@ bookView.initIndexPage = function() {
 }
 
 bookView.initDetailPage = function(ctx) {
-    console.log(ctx)
+    // console.log(ctx)
     // resetView(); use this!
 //   console.log('inside detail page');
 //    console.log(ctx)
@@ -54,7 +54,7 @@ bookView.initCreateFormPage = () => {
 
 bookView.initUpdateFormPage = (ctx) => {
    resetView();
-   console.log(ctx)
+//    console.log(ctx)
    $('#update-form-view').show();
    $('#update-book-title').val(`${ctx.title}`);
    $('#update-book-author').val(`${ctx.author}`);
@@ -73,4 +73,25 @@ bookView.initUpdateFormPage = (ctx) => {
         }
    Book.update(book, book.book_id)
     })
+}
+
+bookView.initSearchFormPage = (callback) => {
+    resetView();
+    $('#search-view').show();
+    $('#search-button').on('click', function(event) {
+        event.preventDefault();
+        let book ={
+          title:  $('#title-input').val(),
+          author:  $('#author-input').val(),
+          isbn:  $('#isbn-input').val(),
+        }
+        console.log(book)
+        Book.find(book, callback)
+    })
+    
+}
+
+bookView.initSearchResultsPage = (arr) => {
+    $('#search-result').show()
+    arr.forEach(a => $('#search-results').append(a.toHtml()));
 }

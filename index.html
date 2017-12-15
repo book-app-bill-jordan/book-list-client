@@ -49,6 +49,7 @@
         <ul>
           <li><a href="/">View All Books</a></li>
           <li><a href="/books/new">Add A New Book</a></li>
+          <li><a href="/books/find">Find A Book</a></li>
         </ul>
       </div>
     </header>
@@ -119,6 +120,19 @@
             <input type="submit" id="password-submit">
         </label>
       </form>
+    </section>
+    <section class="container" id="search-view">
+      <h1>book search</h1>
+      <p>please enter a book title, isbn or author name to search for a book</p>
+      <form id="search-form">
+        <input type="text" id="title-input" placeholder="title">
+        <input type="text" id="author-input" placeholder="author">
+        <input type="text" id="isbn-input" placeholder="isbn">
+        <button id="search-button">Search</button>
+      </form>
+    </section>
+    <section class="container" id="search-results">
+      <h1>Search Results</h1>
     </section>
     <footer>
       <div>
