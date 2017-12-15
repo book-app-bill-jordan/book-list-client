@@ -27,6 +27,16 @@
           </div>
       </article>
     </script>
+    <script id="search-list-template" type="text/x-handlebars-template">
+      <article class="clearfix">
+          <img src="{{image_url}}">
+          <div id="overlay">
+            <h1>{{title}}</h1>
+            <p>By {{author}}</p>
+            <a href="/books/find/{{isbn}}">Add to my list</a>
+          </div>
+      </article>
+    </script>
     <script id="error-template" type="text/x-handlebars-template">
           <h1>Oops something went wrong</h1>
           <p>By {{author}}</p>

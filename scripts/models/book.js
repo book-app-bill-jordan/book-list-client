@@ -28,17 +28,9 @@ Book.fetchAll = callback => {
     .catch(errorCallback)
 }
 
-Book.fetchOne = (ctx, callback) => {
-    // console.log(ctx)
-  $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
-//   .then(console.log('inside fetchone'))
-//   .then(data => console.log(data))
-  .then(data => ctx.bookObj = data[0])
-  .then(callback)
-  .catch(errorCallback)
-}
 
 Book.create = book => {
+    console.log(book)
     $.post(`${__API_URL__}/api/v1/books`, book)
         .then(() => page('/'))
         .catch(errorCallback);
@@ -83,10 +75,19 @@ function errorCallback(err) {
     errorView.initErrorPage(err);
 }
 
+Book.fetchOne = (ctx, callback) => {
+    console.log(ctx)
+  $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
+//   .then(console.log('inside fetchone'))
+//   .then(data => console.log(data))
+  .then(data => ctx.bookObj = data[0])
+  .then(callback)
+  .catch(errorCallback)
+}
+
 Book.findOne = function (isbn) {
-    $.get(`${__API_URL__}/api/v1/books/find/:isbn`, isbn)
+    $.get(`${__API_URL__}/api/v1/books/find/${isbn}`)
     .then(Book.create)
-    .then(callback)
     .catch(errorCallback)
 }
 //     module.Book = Book;

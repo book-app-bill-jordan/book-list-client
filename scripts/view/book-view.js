@@ -18,7 +18,7 @@ bookView.initDetailPage = function(ctx) {
     // console.log(ctx)
     // resetView(); use this!
 //   console.log('inside detail page');
-//    console.log(ctx)
+    console.log(ctx)
   $('.container').hide();
   $('#detail-view').show();
   $('#update-delete').show();
@@ -81,9 +81,9 @@ bookView.initSearchFormPage = (callback) => {
     $('#search-button').on('click', function(event) {
         event.preventDefault();
         let book ={
-          title:  $('#title-input').val(),
-          author:  $('#author-input').val(),
-          isbn:  $('#isbn-input').val(),
+          title:  $('#title-input').val() || '',
+          author:  $('#author-input').val() || '',
+          isbn:  $('#isbn-input').val() || '',
         }
         console.log(book)
         Book.find(book, callback)
@@ -94,5 +94,6 @@ bookView.initSearchFormPage = (callback) => {
 bookView.initSearchResultsPage = () => {
     console.log('search results page')
     $('#search-results').show()
-    Book.all.forEach(a => $('#search-results').append(a.toHtml()));
+    var template = Handlebars.compile($('#search-list-template').text());
+    Book.all.forEach(a => $('#search-results').append(template(a)));
 }
