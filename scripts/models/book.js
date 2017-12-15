@@ -52,19 +52,22 @@ Book.destroy = function(ctx, callback) {
     .catch(errorCallback);
 }
 
-Book.update = function(ctx, callback) {
+Book.update = function(ctx, id) {
     console.log(ctx)
+    console.log(id)
     $.ajax({
-        url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
+        url: `${__API_URL__}/api/v1/books/${id}`,
         method: 'PUT',
         data: {
-            title: this.title,
-            author: this.author,
-            isbn: this.isbn,
-            image_url: this.image_url,
-            description: this.description
+            title: ctx.title,
+            author: ctx.author,
+            isbn: ctx.isbn,
+            image_url: ctx.image_url,
+            description: ctx.description
         }
     })
+    .then(() => page('/'))
+    .catch(errorCallback);
 }
 function errorCallback(err) {
     console.log(err);

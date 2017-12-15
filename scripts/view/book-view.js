@@ -31,6 +31,7 @@ bookView.initDetailPage = function(ctx) {
       Book.destroy(ctx);
     });
   $('#update-button').on('click' , function(event) {
+    //   page(`/books/${$(this).data('id')}/update`)
         bookView.initUpdateFormPage(ctx)
     })
 }
@@ -60,15 +61,16 @@ bookView.initUpdateFormPage = (ctx) => {
    $('#update-book-isbn').val(`${ctx.isbn}`);
    $('#update-book-url').val(`${ctx.image_url}`);
    $('#update-book-description').val(`${ctx.description}`);
-   $('update-form').on('submit', function(event) {
+   $('#update-form').on('submit', function(event) {
        event.preventDefault();
-    //    let book = new Book({
-        ctx.title= $('#book-title').val();
-        ctx.author= $('#book-author').val();
-        ctx.isbn= $('#book-isbn').val();
-        ctx.image_url= $('#book-url').val();
-        ctx.description= $('#book-description').val();
-        console.log('after', ctx)
-        })
-   Book.update(ctx)
+       let book = {
+        book_id: ctx.book_id,
+        title: $('#update-book-title').val(),
+        author: $('#update-book-author').val(),
+        isbn: $('#update-book-isbn').val(),
+        image_url: $('#update-book-url').val(),
+        description: $('#update-book-description').val(),
+        }
+   Book.update(book, book.book_id)
+    })
 }
