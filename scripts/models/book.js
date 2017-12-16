@@ -14,6 +14,7 @@ function resetView() {
     $('.container').hide();
 }
 Book.loadAll = rows => {
+    console.log(rows)
     rows.sort((a,b) => b.title - a.title)
 
     Book.all = rows.map(x => new Book(x))
@@ -27,6 +28,53 @@ Book.fetchAll = callback => {
     .catch(errorCallback)
 }
 
+
+Book.create = book => {
+    console.log(book)
+    $.post(`${__API_URL__}/api/v1/books`, book)
+        .then(() => page('/'))
+        .catch(errorCallback);
+}
+
+Book.destroy = function(ctx, callback) {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${ctx.book_id}`,
+      method: 'DELETE'
+    })
+    .then(() => page('/'))
+    .catch(errorCallback);
+}
+
+Book.update = function(ctx, id) {
+    // console.log(ctx)
+    console.log(id)
+    $.ajax({
+        url: `${__API_URL__}/api/v1/books/${id}`,
+        method: 'PUT',
+        data: {
+            title: ctx.title,
+            author: ctx.author,
+            isbn: ctx.isbn,
+            image_url: ctx.image_url,
+            description: ctx.description
+        }
+    })
+    .then(() => page('/'))
+    .catch(errorCallback);
+}
+
+Book.find = function (book, callback) {
+    console.log(book, callback)
+    $.get(`${__API_URL__}/api/v1/books/find`, book)
+    .then(Book.loadAll)
+    .then(bookView.initSearchResultsPage)
+    .catch(errorCallback)
+}
+function errorCallback(err) {
+    console.log(err);
+    errorView.initErrorPage(err);
+}
+
 Book.fetchOne = (ctx, callback) => {
     console.log(ctx)
   $.get(`${__API_URL__}/api/v1/books/${ctx.params.id}`)
@@ -37,15 +85,10 @@ Book.fetchOne = (ctx, callback) => {
   .catch(errorCallback)
 }
 
-Book.create = book => {
-    $.post(`${__API_URL__}/api/v1/books`, book)
-        .then(() => page('/'))
-        .catch(errorCallback);
-}
-
-function errorCallback(err) {
-    console.log(err);
-    errorView.initErrorPage(err);
+Book.findOne = function (isbn) {
+    $.get(`${__API_URL__}/api/v1/books/find/${isbn}`)
+    .then(Book.create)
+    .catch(errorCallback)
 }
 //     module.Book = Book;
 // });(app)
