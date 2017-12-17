@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>title</title>
-    <!-- <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/icons.css">
     <link rel="stylesheet" href="/styles/base.css">
     <link rel="stylesheet" href="/styles/layout.css">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/styles/modules/error.css">
     <link rel="stylesheet" href="/styles/modules/footer.css">
     <link rel="stylesheet" href="/styles/modules/form-main.css">
-    <link rel="stylesheet" href="/styles/modules/header.css"> -->
+    <link rel="stylesheet" href="/styles/modules/header.css">
 
     <script class="book-stats" type="text/x-handlebars-template">
       <li>{{title}} by {{author}}</li>
@@ -24,6 +24,16 @@
             <h1>{{title}}</h1>
             <p>By {{author}}</p>
             <a href="/books/{{book_id}}">view details</a>
+          </div>
+      </article>
+    </script>
+    <script id="search-list-template" type="text/x-handlebars-template">
+      <article class="clearfix">
+          <img src="{{image_url}}">
+          <div id="overlay">
+            <h1>{{title}}</h1>
+            <p>By {{author}}</p>
+            <a href="/books/find/{{isbn}}">Add to my list</a>
           </div>
       </article>
     </script>
@@ -45,10 +55,11 @@
       <img id="codefellows-logo" src="https://dgosxlrnzhofi.cloudfront.net/assets/dev-icons-cf-a1adb87c240970eb531b2b276c642aed.png">
       <span>books app</span>
       <div class="icon-menu"></div>
-      <div id="dropdown-menu">
+      <div id="dropdown-menu" class="container">
         <ul>
           <li><a href="/">View All Books</a></li>
           <li><a href="/books/new">Add A New Book</a></li>
+          <li><a href="/books/find">Find A Book</a></li>
         </ul>
       </div>
     </header>
@@ -119,6 +130,19 @@
             <input type="submit" id="password-submit">
         </label>
       </form>
+    </section>
+    <section class="container" id="search-view">
+      <h1>book search</h1>
+      <p>please enter a book title, isbn or author name to search for a book</p>
+      <form id="search-form">
+        <input type="text" id="title-input" placeholder="title">
+        <input type="text" id="author-input" placeholder="author">
+        <input type="text" id="isbn-input" placeholder="isbn">
+        <button id="search-button">Search</button>
+      </form>
+    </section>
+    <section class="container" id="search-results">
+      <h1>Search Results</h1>
     </section>
     <footer>
       <div>

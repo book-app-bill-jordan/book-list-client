@@ -1,5 +1,9 @@
 let bookView = {};
 
+$('.icon-menu').on('click', function(){
+  $('#dropdown-menu').show();
+})
+
 Book.prototype.toHtml = function() {
     var template = Handlebars.compile($('#book-list-template').text());
     return template(this);
@@ -15,18 +19,12 @@ bookView.initIndexPage = function() {
 }
 
 bookView.initDetailPage = function(ctx) {
-    console.log(ctx)
-    // resetView(); use this!
-//   console.log('inside detail page');
-//    console.log(ctx)
   $('.container').hide();
   $('#detail-view').show();
   $('#update-delete').show();
   $('.book-detail').empty();
   var template = Handlebars.compile($('#book-detail-template').text());
-//   console.log(template(ctx))
   $('#detail-view').append(template(ctx));
-//   return template(ctx);
   $('#delete-button').on('click' , function(event) {
       Book.destroy(ctx);
     });
@@ -53,22 +51,43 @@ bookView.initCreateFormPage = () => {
 
 bookView.initUpdateFormPage = (ctx) => {
    resetView();
-   console.log(ctx)
    $('#update-form-view').show();
    $('#update-book-title').val(`${ctx.title}`);
    $('#update-book-author').val(`${ctx.author}`);
    $('#update-book-isbn').val(`${ctx.isbn}`);
    $('#update-book-url').val(`${ctx.image_url}`);
    $('#update-book-description').val(`${ctx.description}`);
-   $('update-form').on('submit', function(event) {
+   $('#update-form').on('submit', function(event) {
        event.preventDefault();
-    //    let book = new Book({
-        ctx.title= $('#book-title').val();
-        ctx.author= $('#book-author').val();
-        ctx.isbn= $('#book-isbn').val();
-        ctx.image_url= $('#book-url').val();
-        ctx.description= $('#book-description').val();
-        console.log('after', ctx)
-        })
-   Book.update(ctx)
+       let book = {
+        book_id: ctx.book_id,
+        title: $('#update-book-title').val(),
+        author: $('#update-book-author').val(),
+        isbn: $('#update-book-isbn').val(),
+        image_url: $('#update-book-url').val(),
+        description: $('#update-book-description').val(),
+        }
+   Book.update(book, book.book_id)
+    })
+}
+
+bookView.initSearchFormPage = (callback) => {
+    resetView();
+    $('#search-view').show();
+    $('#search-button').on('click', function(event) {
+        event.preventDefault();
+        let book ={
+          title:  $('#title-input').val() || '',
+          author:  $('#author-input').val() || '',
+          isbn:  $('#isbn-input').val() || '',
+        }
+        Book.find(book, callback)
+    })
+
+}
+
+bookView.initSearchResultsPage = () => {
+    $('#search-results').show()
+    var template = Handlebars.compile($('#search-list-template').text());
+    Book.all.forEach(a => $('#search-results').append(template(a)));
 }

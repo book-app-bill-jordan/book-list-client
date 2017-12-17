@@ -20,7 +20,8 @@ header .icon-menu {
 
 header #dropdown-menu {
   clear: both;
-  display: block;
+  position: absolute;
+  width: 100%;
   margin-top: 90px;
 }
 
@@ -28,4 +29,12 @@ header #dropdown-menu li {
   height: 90px;
   line-height: 90px;
   text-indent: 20px;
+}
+
+form {
+}
+
+form * {
+  display: block;
+  padding: 10px;
 }

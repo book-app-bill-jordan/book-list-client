@@ -14,6 +14,11 @@ header .icon-menu {
 
 header #dropdown-menu {
   background-color: rgba(0, 0, 0, 0.85);
+  /*visibility: hidden;*/
+}
+
+header #dropdown-menu li a {
+  text-decoration: none;
   color: rgba(255, 255, 255, 0.85);
   font-size: 25px;
 }
