@@ -1,5 +1,9 @@
 let bookView = {};
 
+$('.icon-menu').on('click', function(){
+  $('#dropdown-menu').show();
+})
+
 Book.prototype.toHtml = function() {
     var template = Handlebars.compile($('#book-list-template').text());
     return template(this);
@@ -15,23 +19,16 @@ bookView.initIndexPage = function() {
 }
 
 bookView.initDetailPage = function(ctx) {
-    // console.log(ctx)
-    // resetView(); use this!
-//   console.log('inside detail page');
-    console.log(ctx)
   $('.container').hide();
   $('#detail-view').show();
   $('#update-delete').show();
   $('.book-detail').empty();
   var template = Handlebars.compile($('#book-detail-template').text());
-//   console.log(template(ctx))
   $('#detail-view').append(template(ctx));
-//   return template(ctx);
   $('#delete-button').on('click' , function(event) {
       Book.destroy(ctx);
     });
   $('#update-button').on('click' , function(event) {
-    //   page(`/books/${$(this).data('id')}/update`)
         bookView.initUpdateFormPage(ctx)
     })
 }
@@ -54,7 +51,6 @@ bookView.initCreateFormPage = () => {
 
 bookView.initUpdateFormPage = (ctx) => {
    resetView();
-//    console.log(ctx)
    $('#update-form-view').show();
    $('#update-book-title').val(`${ctx.title}`);
    $('#update-book-author').val(`${ctx.author}`);
@@ -85,14 +81,12 @@ bookView.initSearchFormPage = (callback) => {
           author:  $('#author-input').val() || '',
           isbn:  $('#isbn-input').val() || '',
         }
-        console.log(book)
         Book.find(book, callback)
     })
-    
+
 }
 
 bookView.initSearchResultsPage = () => {
-    console.log('search results page')
     $('#search-results').show()
     var template = Handlebars.compile($('#search-list-template').text());
     Book.all.forEach(a => $('#search-results').append(template(a)));
